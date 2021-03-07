@@ -1,18 +1,39 @@
-import time
-from req_lib import Message
+from time import sleep
 import os
 import json
+from req_lib import Message
+import signal
 
 
-with open('api_keys.txt') as json_file:
-    keys = json.load(json_file)
-    api_key = keys['Test_API_Key'][0]
-    api_secret = keys['Test_Secret'][0]
+#todo: Display Time and only update if time changes (maybe)
+investment = 393.21
+n_coins = 322
+
+def evaluate_patrik(rate, investment, n_coins):
+    dif = round(float(rate)*n_coins - investment, 2)
+    if dif < 0:
+        pepelaugh(dif)
+    else:
+        pogChamp(dif)
 
 
+def pepelaugh(dif):
+    print("Pepelaugh -> {} €".format(dif))
+
+def pogChamp(dif):
+    print("pogChamp -> {} €".format(dif))
 
 if __name__ == "__main__":
 
-    msg = Message("https://testnet.binance.vision/api", api_key, api_secret)
-    result = msg.get_accountInfo()
-    print(result)
+    msg = Message("https://api.coingecko.com/api/v3/")
+    #resp = msg.request_only_price('enjincoin', 'eur')
+    #evaluate_patrik(resp,investment,n_coins)S
+    try:
+        while True:
+            resp = msg.request_only_price('enjincoin', 'eur')
+            evaluate_patrik(resp,investment,n_coins)       
+            sleep(60) 
+    except KeyboardInterrupt:
+        print('Ending the program')
+
+    
