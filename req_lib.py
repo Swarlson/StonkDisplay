@@ -24,6 +24,6 @@ class Message:
 
     def request_price_change_date(self, coin, currency):
         ans = requests.get(self._url + '/price?ids={0}&vs_currencies={1}&include_24hr_change=true&include_last_updated_at=true'.format(coin,currency))
-        return ans[coin][currency], ans[coin][currency + '_24h_change'], ans[coin]['last_updated_at']
+        return ans[coin][currency], ans[coin][currency + '_24hr_change'], ans[coin]['last_updated_at']
 
     
