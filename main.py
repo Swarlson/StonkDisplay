@@ -18,10 +18,10 @@ def evaluate_patrik(rate, investment, n_coins):
 
 
 def pepelaugh(dif):
-    print("Pepelaugh -> {} €".format(dif))
+    print("Pepelaugh ->{}€".format(dif))
 
 def pogChamp(dif):
-    print("pogChamp -> {} €".format(dif))
+    print("PogChamp ->{}€".format(dif))
 
 if __name__ == "__main__":
 
