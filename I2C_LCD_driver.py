@@ -170,7 +170,8 @@ class lcd:
       #mach ein directory (oder Array for efficiency altho doesnt matter) für die unterschiedlichen Screens
       #dann rewrite access_buffer functions um bestimmte screens zu editieren und update text abhängig vom current screen machen => fertig.S
       # clocks EN to latch command
-      self.loop_screens()
+      T_timer = threading.Timer(self._loop_mode_time, self.loop_screens())
+      T_timer.start()
       
 
    def lcd_strobe(self, data):
@@ -261,8 +262,7 @@ class lcd:
    def loop_screens(self):
       self.activeScreen = (self.activeScreen +1) % len(self.screens) #iteriert durch ALLE screens (im moment nur zwei vll mach ich aber 3-4)
       self.update_text()
-      T_timer = threading.Timer(self._loop_mode_time, self.loop_screens())
-      T_timer.start()
+
 
 
    def update_text(self):
