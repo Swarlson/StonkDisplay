@@ -268,11 +268,13 @@ class lcd:
 
 
 
-   def update_text(self):
+   def update_text(self):  
       for index, i in enumerate(self.display_buffer[self.activeScreen]):
-         if i != self.display_text[self.activeScreen][index]:
-            self.lcd_display_string(i, index+1) #+1 weil driver line 1&2 statt 0&1 machen und ich will die nicht verändern im moment
-            self.display_text[self.activeScreen][index] = self.display_buffer[self.activeScreen][index]
+         #if i != self.display_text[self.activeScreen][index]: # Depcrecated for now
+         self.lcd_display_string(i, index+1) #+1 weil driver line 1&2 statt 0&1 machen und ich will die nicht verändern im moment
+         self.display_text[self.activeScreen][index] = self.display_buffer[self.activeScreen][index]
+
+
 
    def update_buffer(self, content, line, idx_screen):
       self.display_buffer[idx_screen][line-1] = content #weil lines 1&2 sind
