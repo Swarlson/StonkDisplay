@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from time import sleep
+from datetime import datetime
 import os
 import json
 from req_lib import Message
@@ -41,13 +42,20 @@ if __name__ == "__main__":
     #evaluate_patrik(resp,investment,n_coins)
     try:
         while True:
-            resp = msg.request_only_price('enjincoin', 'eur')
-            content = evaluate_patrik(resp,investment,n_coins)       
-            mylcd.update_buffer("Patriks Stonks",1,0)
-            mylcd.update_buffer(content, 2, 0)
+            #resp = msg.request_only_price('enjincoin', 'eur')
+            value, change, date = msg.request_price_change_date('enjincoin', 'eur')
+            clocktime = str(datetime.fromtimestamp(int(date)).strftime('%H:%M:%S'))
+            
+            content1 = evaluate_patrik(value,investment,n_coins)  
 
-            mylcd.update_buffer("Screen2",1,1)
-            mylcd.update_buffer("Hodl",2, 1)
+            mylcd.update_buffer("Patriks Stonks",1,0)
+            mylcd.update_buffer(content1, 2, 0)
+
+            content3 = "Updated: " + clocktime
+            content4 = "24h change: " + str(round(change, 4))
+
+            mylcd.update_buffer(content3,1,1)
+            mylcd.update_buffer(content4,2, 1)
             sleep(60) 
     except KeyboardInterrupt:
         print('Ending the program')

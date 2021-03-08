@@ -263,7 +263,7 @@ class lcd:
       self.lcd_clear()
       self.activeScreen = (self.activeScreen +1) % len(self.screens) #iteriert durch ALLE screens (im moment nur zwei vll mach ich aber 3-4)
       self.update_text()
-      print(self.activeScreen) #debug
+      #print(self.activeScreen) #debug
       
 
 
