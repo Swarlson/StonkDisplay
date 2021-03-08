@@ -263,7 +263,7 @@ class lcd:
       threading.Timer(self._loop_mode_time, self.loop_screens).start()
       self.activeScreen = (self.activeScreen +1) % len(self.screens) #iteriert durch ALLE screens (im moment nur zwei vll mach ich aber 3-4)
       self.update_text()
-      print(self.activeScreen) #debugging
+      print(self.activeScreen) #debug
       
 
 
@@ -276,7 +276,7 @@ class lcd:
 
    def update_buffer(self, content, line, idx_screen):
       self.display_buffer[idx_screen][line-1] = content #weil lines 1&2 sind
-#      print('Buffer Updated')
+      print(self.display_buffer) #debug
 
    def clear_buffer(self):
       self.display_buffer = [["",""],["",""]]
