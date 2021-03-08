@@ -259,7 +259,7 @@ class lcd:
       threading.Timer(self._loop_time, self.loop_text_update())
 
    def loop_screens(self):
-      threading.Timer(self._loop_mode_time, self.loop_screens()).start()
+      threading.Timer(self._loop_mode_time, self.loop_screens).start()
       self.activeScreen = (self.activeScreen +1) % len(self.screens) #iteriert durch ALLE screens (im moment nur zwei vll mach ich aber 3-4)
       self.update_text()
       
