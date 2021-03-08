@@ -45,7 +45,7 @@ if __name__ == "__main__":
             #resp = msg.request_only_price('enjincoin', 'eur')
             value, change, date = msg.request_price_change_date('enjincoin', 'eur')
             clocktime = str(datetime.fromtimestamp(int(date)).strftime('%H:%M:%S'))
-            
+
             content1 = evaluate_patrik(value,investment,n_coins)  
 
             mylcd.update_buffer("Patriks Stonks",1,0)
