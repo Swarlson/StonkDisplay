@@ -23,11 +23,13 @@ def evaluate_patrik(rate, investment, n_coins):
 
 
 def pepelaugh(dif):
-    print("KEKW ->{}€".format(dif))
+    content = ("KEKW ->{}€".format(dif))
+    print(content)
     return content
 
 def pogChamp(dif):
-    print("Pog ->{}€".format(dif))
+    content = ("Pog ->{}€".format(dif))
+    print(content)
     return content
 
 if __name__ == "__main__":
