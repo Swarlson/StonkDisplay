@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Hier definiere ich alle request funktionen
 #1. Mache ein Objekt für requests mit privaten methoden für den call
 #2. Wrsl iwelche public funktionen für den super einfachen use in main (vll aber nicht)
