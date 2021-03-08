@@ -51,8 +51,8 @@ if __name__ == "__main__":
             mylcd.update_buffer("Patriks Stonks",1,0)
             mylcd.update_buffer(content1, 2, 0)
 
-            content3 = "Updated: " + clocktime
-            content4 = "24h change: " + str(round(change, 4))
+            content3 = "Updated " + clocktime
+            content4 = "Change24  " + str(round(change, 4))
 
             mylcd.update_buffer(content3,1,1)
             mylcd.update_buffer(content4,2, 1)
