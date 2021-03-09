@@ -6,12 +6,16 @@ import json
 from req_lib import Message
 import signal
 from I2C_LCD_driver import i2c_device, lcd
+import requests
 
 
-#todo: Display Time and only update if time changes (maybe)
+#Todo: Mach active/testing main methods damit du nicht ständig den ganzen shit rauskommentieren musst
+#Todo: Do binance implementation (maybe other project for this) calls etc zu simulieren und zu schauen wie es läuft
+
 investment = 393.21
 n_coins = 322
 content = "Foobar"
+failed_requests = 0
 
 def evaluate_patrik(rate, investment, n_coins):
     dif = round(float(rate)*n_coins - investment, 2)
@@ -43,7 +47,13 @@ if __name__ == "__main__":
     try:
         while True:
             #resp = msg.request_only_price('enjincoin', 'eur')
-            value, change, date = msg.request_price_change_date('enjincoin', 'eur')
+            try:
+                value, change, date = msg.request_price_change_date('enjincoin', 'eur')
+            except requests.exceptions.RequestException as e:
+                failed_requests += 1
+                pass
+
+
             clocktime = str(datetime.fromtimestamp(int(date)).strftime('%H:%M:%S'))
 
             content1 = evaluate_patrik(value,investment,n_coins)  
