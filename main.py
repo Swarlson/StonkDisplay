@@ -6,6 +6,7 @@ from I2C_LCD_driver import lcd
 import socket  
 if __name__ == "__main__":
     mylcd = lcd()
+    mylcd.screens = [0]
     mylcd.start()
     #resp = msg.request_only_price('enjincoin', 'eur')
     #evaluate_patrik(resp,investment,n_coins)
